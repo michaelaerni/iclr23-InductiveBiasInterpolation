@@ -1,0 +1,41 @@
+Rotations.dataset_loader = @EuroSATLoader()
+Rotations.num_train_samples = 7680
+Rotations.num_test_samples = 10000
+Rotations.num_train_steps = 144000  # 16 * (7680/128) * 150 epochs
+Rotations.stratify_samples = True
+Rotations.standardize_features = True
+Rotations.network_builder = @WideResNetBuilder()
+Rotations.train_batch_size = 128
+Rotations.noise_fraction = %noise_fraction
+Rotations.interpolation_mode = "bilinear"
+Rotations.crop_size = 44  # almost largest possible
+Rotations.num_train_rotations = %num_train_rotations
+Rotations.test_grid_size = 16
+Rotations.test_batch_size = 250
+Rotations.deterministic_training = True
+Rotations.seed = %seed
+Rotations.training_seed = %training_seed
+Rotations.log_every = 960  # 16 * (7680/128) * 1 epochs
+Rotations.train_eval_every = 1920   # 2 epochs @ 16 rotations
+Rotations.test_eval_every = 1920   # 2 epochs @ 16 rotations
+Rotations.test_eval_every_initial = (9600, 480)  # all 0.5 epochs for first 10 epochs (@16)
+
+# Model
+WideResNetBuilder.depth = 16
+WideResNetBuilder.widen_factor = %network_builder_widen_factor
+
+# Optimizer and lr schedule
+optimizer.cls = @torch.optim.SGD
+optimizer.lr = %optimizer_lr
+optimizer.momentum = 0.9
+optimizer.weight_decay = 0.0
+optimizer.dampening = 0.0
+optimizer.nesterov = False
+
+# Inverse sqrt decay with warmup
+lr_scheduler.cls = @WarmupScheduler
+lr_scheduler.scheduler_cls = @InverseSqrtLR
+lr_scheduler.warmup_steps = %lr_scheduler_warmup_steps
+lr_scheduler.keep_epoch = False
+lr_scheduler.decay_rate = %lr_scheduler_decay_rate
+lr_scheduler.discrete_steps = True

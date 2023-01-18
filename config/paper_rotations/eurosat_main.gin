@@ -1,0 +1,8 @@
+# Setting-specific values
+network_builder_widen_factor = 6
+optimizer_lr = 0.15
+lr_scheduler_warmup_steps = 4800  # 5 epochs @ 16 rotations
+lr_scheduler_decay_rate = 960  # 1 epoch @ 16 rotations
+
+# Include base after define above macros
+include 'config/paper_rotations/eurosat_base.gin'

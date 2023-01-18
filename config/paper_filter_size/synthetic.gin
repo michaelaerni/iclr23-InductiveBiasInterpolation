@@ -1,0 +1,38 @@
+## General
+num_epochs = 300
+FilterExperiment.dataset = @ShapeDataset()
+FilterExperiment.num_train_samples = 200
+FilterExperiment.num_test_samples = 100000
+FilterExperiment.train_epochs = %num_epochs
+FilterExperiment.train_batch_size = 100
+FilterExperiment.noise_fraction = %noise_fraction
+FilterExperiment.test_batch_size = 200
+FilterExperiment.seed = %seed
+FilterExperiment.training_seed = %training_seed
+FilterExperiment.deterministic_training = True
+FilterExperiment.log_every = 5
+FilterExperiment.train_eval_every = 5
+FilterExperiment.test_eval_every = 10
+FilterExperiment.test_eval_every_initial = (150, 2)
+
+ShapeDataset.image_size = 32
+ShapeDataset.shape_size = 5
+ShapeDataset.min_shape_size = 3
+ShapeDataset.num_shapes_per_sample = 10
+ShapeDataset.cache_dir = %cache_dir
+
+network.cls = @FilterSizeCNN
+network.width = %width
+network.filter_size = %filter_size
+network.dense_width = 256
+
+lr_schedule.builder = @warmup_inverse_sqrt_schedule
+lr_schedule.per_epoch = True
+lr_schedule.peak_value = %lr_schedule_peak_value
+lr_schedule.warmup_steps = 50
+lr_schedule.transition_steps = 20
+lr_schedule.staircase = True
+
+optimizer.builder = @optax.sgd
+optimizer.momentum = 0.9
+optimizer.nesterov = False

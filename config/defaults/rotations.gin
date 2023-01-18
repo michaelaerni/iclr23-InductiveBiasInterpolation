@@ -1,0 +1,37 @@
+## General
+num_train_steps = 1536000  # 16 * (7680 / 16) * 200
+Rotations.dataset_loader = @EuroSATLoader()
+Rotations.convert_grayscale = False
+Rotations.num_train_samples = 7680
+Rotations.num_test_samples = 10000
+Rotations.num_train_steps = %num_train_steps
+Rotations.stratify_samples = True
+Rotations.standardize_features = True
+Rotations.train_batch_size = 16
+Rotations.noise_fraction = 0.0
+Rotations.interpolation_mode = "bilinear"
+Rotations.crop_size = 44
+Rotations.num_train_rotations = 1
+Rotations.network_builder = @WideResNetBuilder()
+Rotations.test_grid_size = 16
+Rotations.test_batch_size = 250
+Rotations.seed = 0
+Rotations.training_seed = None
+Rotations.deterministic_training = False
+Rotations.log_every = 7680
+Rotations.train_eval_every = 76800
+Rotations.test_eval_every = 153600
+
+## NN
+WideResNetBuilder.depth = 16
+WideResNetBuilder.widen_factor = 6
+
+## Optimizer and lr schedule
+optimizer.cls = @torch.optim.SGD
+optimizer.lr = 0.1
+#optimizer.momentum = 0.9
+#optimizer.weight_decay = 0.0
+#optimizer.dampening = 0.0
+#optimizer.nesterov = False
+
+lr_scheduler.cls = None

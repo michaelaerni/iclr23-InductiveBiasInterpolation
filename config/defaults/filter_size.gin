@@ -1,0 +1,36 @@
+## General
+num_epochs = 300
+FilterExperiment.dataset = @ShapeDataset()
+FilterExperiment.num_train_samples = 200
+FilterExperiment.num_test_samples = 100000
+FilterExperiment.binarized_classes = None
+FilterExperiment.convert_grayscale = False
+FilterExperiment.standardize_features = False
+FilterExperiment.crop_size = None
+FilterExperiment.train_epochs = %num_epochs
+FilterExperiment.train_batch_size = 100
+FilterExperiment.noise_fraction = 0.0
+FilterExperiment.test_batch_size = 200
+FilterExperiment.seed = 0
+FilterExperiment.training_seed = None
+FilterExperiment.deterministic_training = True
+FilterExperiment.log_every = 5
+FilterExperiment.train_eval_every = 5
+FilterExperiment.test_eval_every = 10
+
+ShapeDataset.image_size = 32
+ShapeDataset.shape_size = 5
+ShapeDataset.min_shape_size = 3
+ShapeDataset.num_shapes_per_sample = 10
+ShapeDataset.cache_dir = None
+
+network.cls = @FilterSizeCNN
+network.width = 128
+network.filter_size = 7
+network.dense_width = 256
+
+#lr_schedule.builder = ...
+
+optimizer.builder = @optax.sgd
+#optimizer.momentum = 0.9
+#optimizer.nesterov = False
