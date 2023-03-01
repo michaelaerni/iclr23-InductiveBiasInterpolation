@@ -1,10 +1,19 @@
 Strong inductive biases provably prevent harmless interpolation
 ================================================================
-This repository contains the official code of
+This repository contains the official code of the ICLR 2023 paper
 
-  > Strong inductive biases provably prevent harmless interpolation
+**[Strong inductive biases provably prevent harmless interpolation](https://openreview.net/forum?id=7i6OZa7oij)**
 
-by Michael Aerni, Marco Milanta, Konstantin Donhauser, and Fanny Yang.
+by Michael Aerni, Marco Milanta, Konstantin Donhauser, Fanny Yang.
+
+Please cite our work and this code as
+
+    @inproceedings{Aerni23,
+      title={Strong inductive biases provably prevent harmless interpolation},
+      author={Michael Aerni and Marco Milanta and Konstantin Donhauser and Fanny Yang},
+      booktitle={Proceedings of the International Conference on Learning Representations (ICLR)},
+      year={2023},
+    }
 
 Setup and dependencies
 ----------------------
